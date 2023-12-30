@@ -6,12 +6,19 @@
   font-family: "Nunito Sans", sans-serif;
 }
 
+body {
+  width: 100vw;
+  background-color: hsl(0, 0%, 98%);
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  margin: 0 80px;
+  width: 100vw;
+  padding: 0 80px;
+  background-color: hsl(0, 0%, 100%);
 }
 .navbar__moon-icon {
   margin: 0 10px 0 0;

@@ -1,11 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch as regularSearch } from "@fortawesome/free-regular-svg-icons";
+import { faSearch as solidSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function Options() {
   return (
     <section className="options">
       <div className="options__search-bar">
-        <FontAwesomeIcon icon={regularSearch} />
+        <FontAwesomeIcon className="options__search-icon" icon={solidSearch} />
+        <input
+          placeholder="Search for a country..."
+          type="text"
+          className="options__input"
+        />
+      </div>
+      <div className="options__select-bar">
+        <select className="options__select-menu" name="" id="">
+          <option value="">Filter by Region</option>
+          <option value="">Africa</option>
+          <option value="">America</option>
+          <option value="">Asia</option>
+          <option value="">Europe</option>
+          <option value="">Oceania</option>
+        </select>
       </div>
     </section>
   );
