@@ -1,5 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap");
+
+$dark-mode-elements: hsl(209, 23%, 22%);
+$dark-mode-background: hsl(207, 26%, 17%);
+$light-mode-text: hsl(200, 15%, 8%);
+$light-mode-input: hsl(0, 0%, 52%);
+$light-mode-background: hsl(0, 0%, 98%);
+$dark-mode-text: hsl(0, 0%, 100%);
+$light-mode-elements: hsl(0, 0%, 100%);
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+body {
+  width: 100vw;
+  background-color: $light-mode-background;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100vw;
+  padding: 0 80px;
+  background-color: $light-mode-elements;
+
+  &__moon-icon {
+    margin: 0 10px 0 0;
+  }
+
+  &__switch-theme {
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+.options {
 }
