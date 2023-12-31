@@ -15,7 +15,7 @@ export default function AllCountries() {
           console.log(data);
         }
       } catch (error) {
-        console.log("Błąd pobierania danych:", error);
+        console.log("Coś poszło nie tak!", error);
       }
     };
     fetchData();

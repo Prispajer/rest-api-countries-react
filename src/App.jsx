@@ -10,10 +10,10 @@ function App() {
     <div>
       <Router>
         <Navbar />
-        <Options />
+        {<Options />}
         <Routes>
           <Route path="/" element={<AllCountries />} />
-          <Route path="/country/:countryName" element={<SelectedCountry />} />
+          <Route path="/specificCountry" element={<SelectedCountry />} />
         </Routes>
       </Router>
     </div>
