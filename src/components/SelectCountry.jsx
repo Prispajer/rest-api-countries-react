@@ -1,5 +1,4 @@
 import React from "react";
-import Options from "./Options";
 
 export default function SelectedCountry() {
   const [specificCountry, setSpecificCountry] = React.useState([]);

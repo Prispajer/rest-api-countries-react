@@ -1,7 +1,5 @@
-import Navbar from "./components/Navbar";
-import Options from "./components/Options";
-import AllCountries from "./components/AllCountries";
-import SelectedCountry from "./components/SelectedCountry";
+import AllCountries from "./pages/AllCountries";
+import SpecificCountry from "./pages/SpecificCountry";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./styles/main.scss";
 
@@ -9,11 +7,9 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar />
-        {<Options />}
         <Routes>
           <Route path="/" element={<AllCountries />} />
-          <Route path="/specificCountry" element={<SelectedCountry />} />
+          <Route path="/specificCountry" element={<SpecificCountry />} />
         </Routes>
       </Router>
     </div>

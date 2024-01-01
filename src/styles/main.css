@@ -23,7 +23,7 @@ body {
 .navbar__moon-icon {
   margin: 0 10px 0 0;
 }
-.navbar__switch-theme {
+.navbar__theme {
   font-weight: 600;
   cursor: pointer;
 }
