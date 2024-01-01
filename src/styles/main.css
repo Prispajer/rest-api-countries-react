@@ -114,20 +114,42 @@ body {
   background: transparent;
   cursor: pointer;
 }
-.specificCountry span {
+.specificCountry button span {
   margin: 0 0 0 10px;
 }
 .specificCountry img {
   height: 160px;
 }
 .specificCountry__container {
-  margin: 80px 0 0 0;
   display: flex;
+  align-items: center;
+  margin: 80px 0 0 0;
+  gap: 160px;
+}
+.specificCountry__informations-container {
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 .specificCountry__informations {
   display: flex;
+  justify-content: space-between;
+}
+.specificCountry__information {
+  display: flex;
+  gap: 10px;
   flex-direction: column;
+}
+.specificCountry__information span {
+  font-weight: 600;
+}
+.specificCountry__border-countries {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.specificCountry__border-countries p {
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=main.css.map */

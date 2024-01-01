@@ -6,13 +6,14 @@ import { useParams, Link } from "react-router-dom";
 
 export default function SelectedCountry() {
   const [specificCountry, setSpecificCountry] = React.useState([]);
+
   const { countryName } = useParams();
 
   React.useEffect(() => {
     const fetchData = async () => {
       try {
         const specificData = await fetch(
-          `https://restcountries.com/v3.1/name/Poland?fullText=true`
+          `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
         );
         if (!specificData.ok) {
           throw new Error("Wystąpił błąd podczas pobierania danych z API");
@@ -26,7 +27,7 @@ export default function SelectedCountry() {
     };
 
     fetchData();
-  }, []);
+  }, [countryName]);
 
   if (!specificCountry) {
     console.log("Nic nie znaleziono");
@@ -38,9 +39,15 @@ export default function SelectedCountry() {
 
   const borderButtons = [];
   borders.forEach((countryBorders) => {
-    countryBorders.forEach((border) => {
-      borderButtons.push(<button key={uuidv4()}>{border}</button>);
-    });
+    if (countryBorders && countryBorders.length > 0) {
+      countryBorders.forEach((border) => {
+        borderButtons.push(<button key={uuidv4()}>{border}</button>);
+      });
+    } else {
+      borderButtons.push(
+        <span key={uuidv4()}>This country has no neighbours!</span>
+      );
+    }
   });
 
   return (

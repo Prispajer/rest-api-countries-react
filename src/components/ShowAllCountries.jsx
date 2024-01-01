@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function AllCountries({ changeClick }) {
+export default function AllCountries() {
   const [countries, setCountries] = React.useState([]);
-  const { countryName } = useParams();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -26,17 +26,15 @@ export default function AllCountries({ changeClick }) {
   return (
     <section className="countries">
       {countries.map((country) => (
-        <section
-          key={country.name.official}
-          className="country__container"
-          onClick={changeClick}
-        >
-          <div className="country__flag">
-            <img
-              src={country.flags.svg}
-              alt={`Flaga: ${country.name.common}`}
-            />
-          </div>
+        <section key={country.name.official} className="country__container">
+          <Link to={`/specificCountry/${country.name.common}`}>
+            <div className="country__flag">
+              <img
+                src={country.flags.svg}
+                alt={`Flaga: ${country.name.common}`}
+              />
+            </div>
+          </Link>
           <div className="country__informations">
             <h3 className="country__name">{country.name.common}</h3>
             <p className="country__information">
