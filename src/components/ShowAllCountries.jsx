@@ -1,7 +1,8 @@
 import React from "react";
 
-export default function AllCountries() {
+export default function AllCountries({ changeClick }) {
   const [countries, setCountries] = React.useState([]);
+
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,28 +22,37 @@ export default function AllCountries() {
     fetchData();
   }, []);
 
-  const mappedElements = countries.map((country) => (
-    <section key={country.name.official} className="country__container">
-      <div className="country__flag">
-        <img src={country.flags.svg} alt={`Flaga: ${country.name.common}`} />
-      </div>
-      <div className="country__informations">
-        <h3 className="country__name">{country.name.common}</h3>
-        <p className="country__information">
-          <span>{`Population: `}</span>
-          {country.population}
-        </p>
-        <p className="country__information">
-          <span>{`Region: `}</span>
-          {country.region}
-        </p>
-        <p className="country__information">
-          <span>{`Capital: `}</span>
-          {country.capital}
-        </p>
-      </div>
+  return (
+    <section className="countries">
+      {countries.map((country) => (
+        <section
+          key={country.name.official}
+          className="country__container"
+          onClick={changeClick}
+        >
+          <div className="country__flag">
+            <img
+              src={country.flags.svg}
+              alt={`Flaga: ${country.name.common}`}
+            />
+          </div>
+          <div className="country__informations">
+            <h3 className="country__name">{country.name.common}</h3>
+            <p className="country__information">
+              <span>{`Population: `}</span>
+              {country.population}
+            </p>
+            <p className="country__information">
+              <span>{`Region: `}</span>
+              {country.region}
+            </p>
+            <p className="country__information">
+              <span>{`Capital: `}</span>
+              {country.capital}
+            </p>
+          </div>
+        </section>
+      ))}
     </section>
-  ));
-
-  return <section className="countries">{mappedElements}</section>;
+  );
 }

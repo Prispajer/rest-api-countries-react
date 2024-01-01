@@ -5,14 +5,17 @@ import "./styles/main.scss";
 
 function App() {
   return (
-    <div>
+    <main>
       <Router>
         <Routes>
           <Route path="/" element={<AllCountries />} />
-          <Route path="/specificCountry" element={<SpecificCountry />} />
+          <Route
+            path="/specificCountry/:countryName"
+            element={<SpecificCountry />}
+          />
         </Routes>
       </Router>
-    </div>
+    </main>
   );
 }
 

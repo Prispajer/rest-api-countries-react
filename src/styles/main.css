@@ -7,7 +7,6 @@
 }
 
 body {
-  width: 100vw;
   background-color: hsl(0, 0%, 98%);
 }
 
@@ -45,7 +44,6 @@ body {
   color: gray;
   padding: 0 0 0 20px;
   margin: 0 20px 0 0;
-  width: 10%;
 }
 .options__input {
   border: none;
@@ -101,6 +99,35 @@ body {
 }
 .countries .country__container .country__informations .country__information span {
   font-weight: 600;
+}
+
+.specificCountry {
+  margin: 50px 80px;
+  display: flex;
+  align-items: center;
+}
+.specificCountry button {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.specificCountry span {
+  margin: 0 0 0 10px;
+}
+.specificCountry img {
+  height: 160px;
+}
+.specificCountry__container {
+  margin: 80px 0 0 0;
+  display: flex;
+  gap: 40px;
+}
+.specificCountry__informations {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=main.css.map */
