@@ -2,6 +2,7 @@ import React from "react";
 
 export default function AllCountries({ changeClick }) {
   const [countries, setCountries] = React.useState([]);
+  const { countryName } = useParams();
 
   React.useEffect(() => {
     const fetchData = async () => {
