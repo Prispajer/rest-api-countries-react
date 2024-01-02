@@ -7,6 +7,7 @@ import { useParams, Link } from "react-router-dom";
 export default function SelectedCountry() {
   const [specificCountry, setSpecificCountry] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+
   const { countryName } = useParams();
 
   React.useEffect(() => {
@@ -19,6 +20,7 @@ export default function SelectedCountry() {
           throw new Error("Nie można znaleźć danych w API");
         } else {
           const data = await specificData.json();
+          console.log(data);
           setSpecificCountry(data);
           setIsLoading(false);
         }
@@ -30,24 +32,39 @@ export default function SelectedCountry() {
     fetchData();
   }, [countryName]);
 
-  if (!specificCountry) {
-    console.log("Nie znaleziono podanego kraju");
+  const findByProperty = specificCountry.find(
+    (searchName) => searchName.name.common === countryName
+  );
+
+  if (!specificCountry || !findByProperty) {
+    return <p style={{ margin: "50px 80px" }}>Loading...</p>;
   }
+
+  const currenciesArray = Object.keys(findByProperty.currencies);
+
+  const languagesArray = Object.keys(findByProperty.languages);
+
+  const mappedCurrencies = currenciesArray.map(
+    (key) => findByProperty.currencies[key].name
+  );
+
+  const mappedLanguages = languagesArray.map(
+    (key) => findByProperty.languages[key]
+  );
 
   const borders = specificCountry.map(
     (specificCountry) => specificCountry.borders
   );
 
-  const borderButtons = [];
-  borders.forEach((countryBorders) => {
+  const borderButtons = borders.map((countryBorders) => {
     if (countryBorders && countryBorders.length > 0) {
-      countryBorders.forEach((border) => {
-        borderButtons.push(<button key={uuidv4()}>{border}</button>);
-      });
+      return countryBorders.map((border) => (
+        <Link key={uuidv4()} to={`/specificCountry/${border}`}>
+          <button key={uuidv4()}>{border}</button>
+        </Link>
+      ));
     } else {
-      borderButtons.push(
-        <span key={uuidv4()}>This country has no neighbours!</span>
-      );
+      return <span key={uuidv4()}>This country has no neighbours!</span>;
     }
   });
 
@@ -79,7 +96,9 @@ export default function SelectedCountry() {
                     </p>
                     <p>
                       <span>{"Population: "}</span>
-                      {specificCountry.population}
+                      {specificCountry.population
+                        .toString()
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
                     </p>
                     <p>
                       <span>{"Region: "}</span>
@@ -101,9 +120,11 @@ export default function SelectedCountry() {
                     </p>
                     <p>
                       <span>{"Currencies: "}</span>
+                      {mappedCurrencies.join(", ")}
                     </p>
                     <p>
                       <span>{"Languages: "}</span>
+                      {mappedLanguages.join(", ")}
                     </p>
                   </div>
                 </div>

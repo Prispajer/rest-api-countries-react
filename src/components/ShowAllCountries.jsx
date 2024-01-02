@@ -43,7 +43,9 @@ export default function AllCountries() {
                 <h3 className="country__name">{country.name.common}</h3>
                 <p className="country__information">
                   <span>{`Population: `}</span>
-                  {country.population}
+                  {country.population
+                    .toString()
+                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
                 </p>
                 <p className="country__information">
                   <span>{`Region: `}</span>
