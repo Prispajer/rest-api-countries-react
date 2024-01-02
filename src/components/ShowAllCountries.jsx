@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function AllCountries() {
   const [countries, setCountries] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -10,48 +11,53 @@ export default function AllCountries() {
         const response = await fetch("https://restcountries.com/v3.1/all");
 
         if (!response.ok) {
-          throw new Error("Wystąpił błąd podczas pobierania danych z API");
+          throw new Error("Nie można znaleźć danych w API");
         } else {
           const data = await response.json();
           setCountries(data);
-          console.log(data);
+          setIsLoading(false);
         }
       } catch (error) {
         console.log("Coś poszło nie tak!", error);
       }
     };
+    setIsLoading(true);
     fetchData();
   }, []);
 
   return (
     <section className="countries">
-      {countries.map((country) => (
-        <section key={country.name.official} className="country__container">
-          <Link to={`/specificCountry/${country.name.common}`}>
-            <div className="country__flag">
-              <img
-                src={country.flags.svg}
-                alt={`Flaga: ${country.name.common}`}
-              />
-            </div>
-          </Link>
-          <div className="country__informations">
-            <h3 className="country__name">{country.name.common}</h3>
-            <p className="country__information">
-              <span>{`Population: `}</span>
-              {country.population}
-            </p>
-            <p className="country__information">
-              <span>{`Region: `}</span>
-              {country.region}
-            </p>
-            <p className="country__information">
-              <span>{`Capital: `}</span>
-              {country.capital}
-            </p>
-          </div>
-        </section>
-      ))}
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        countries.map((country) => (
+          <section key={country.name.official} className="country__container">
+            <Link to={`/specificCountry/${country.name.common}`}>
+              <div className="country__flag">
+                <img
+                  src={country.flags.svg}
+                  alt={`Flaga: ${country.name.common}`}
+                />
+              </div>
+              <div className="country__informations">
+                <h3 className="country__name">{country.name.common}</h3>
+                <p className="country__information">
+                  <span>{`Population: `}</span>
+                  {country.population}
+                </p>
+                <p className="country__information">
+                  <span>{`Region: `}</span>
+                  {country.region}
+                </p>
+                <p className="country__information">
+                  <span>{`Capital: `}</span>
+                  {country.capital}
+                </p>
+              </div>
+            </Link>
+          </section>
+        ))
+      )}
     </section>
   );
 }
