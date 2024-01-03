@@ -4,29 +4,19 @@ import Navbar from "../components/Navbar";
 import ShowAllCountries from "../components/ShowAllCountries";
 
 export default function AllCountries() {
-  const [searchResult, setSearchResult] = React.useState("");
+  const [inputValue, setInputValue] = React.useState("");
+  const [debouncedValue, setDebouncedValue] = React.useState(inputValue);
 
-  const debounce = (callback, delay = 1000) => {
-    let interval;
-    return (...args) => {
-      if (interval) {
-        clearTimeout(interval);
-      } else {
-        interval = setTimeout(() => {
-          callback.apply(null, args);
-        }, delay);
-      }
-    };
-  };
-
-  const handleChange = (country) => {
-    setSearchResult(country);
-  };
   return (
     <>
       <Navbar />
-      <Options handleChange={handleChange} debounce={debounce} />
-      <ShowAllCountries searchResult={searchResult} />
+      <Options
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        debouncedValue={debouncedValue}
+        setDebouncedValue={setDebouncedValue}
+      />
+      <ShowAllCountries inputValue={debouncedValue} />
     </>
   );
 }

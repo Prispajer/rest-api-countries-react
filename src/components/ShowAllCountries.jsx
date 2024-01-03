@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function ShowAllCountries({ searchResult }) {
+export default function ShowAllCountries({ inputValue }) {
   const [countries, setCountries] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -25,21 +25,8 @@ export default function ShowAllCountries({ searchResult }) {
     fetchData();
   }, []);
 
-  const debounce = (callback, delay = 1000) => {
-    let interval;
-    return (...args) => {
-      if (interval) {
-        clearTimeout(interval);
-      } else {
-        interval = setTimeout(() => {
-          callback.apply(null, args);
-        }, delay);
-      }
-    };
-  };
-
-  const filteredArray = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchResult.toLowerCase())
+  const findByName = countries.filter((country) =>
+    country.name.common.toLowerCase().includes(inputValue.toLowerCase())
   );
 
   return (
@@ -47,7 +34,7 @@ export default function ShowAllCountries({ searchResult }) {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        filteredArray.map((country) => (
+        findByName.map((country) => (
           <section key={country.name.official} className="country__container">
             <Link to={`/specificCountry/${country.name.common}`}>
               <div className="country__flag">
