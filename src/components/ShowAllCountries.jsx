@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function ShowAllCountries({ inputValue }) {
+export default function ShowAllCountries({ debouncedValue, switchTheme }) {
   const [countries, setCountries] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -26,16 +26,21 @@ export default function ShowAllCountries({ inputValue }) {
   }, []);
 
   const findByName = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(inputValue.toLowerCase())
+    country.name.common.toLowerCase().includes(debouncedValue.toLowerCase())
   );
 
   return (
-    <section className="countries">
+    <section className={switchTheme ? "countries" : "countries__dark"}>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         findByName.map((country) => (
-          <section key={country.name.official} className="country__container">
+          <section
+            key={country.name.official}
+            className={
+              switchTheme ? "country__container" : "country__container__dark"
+            }
+          >
             <Link to={`/specificCountry/${country.name.common}`}>
               <div className="country__flag">
                 <img
@@ -43,19 +48,49 @@ export default function ShowAllCountries({ inputValue }) {
                   alt={`Flaga: ${country.name.common}`}
                 />
               </div>
-              <div className="country__informations">
-                <h3 className="country__name">{country.name.common}</h3>
-                <p className="country__information">
+              <div
+                className={
+                  switchTheme
+                    ? "country__informations"
+                    : "country__informations__dark"
+                }
+              >
+                <h3
+                  className={
+                    switchTheme ? "country__name" : "country__name__dark"
+                  }
+                >
+                  {country.name.common}
+                </h3>
+                <p
+                  className={
+                    switchTheme
+                      ? "country__information"
+                      : "country__information__dark"
+                  }
+                >
                   <span>{`Population: `}</span>
                   {country.population
                     .toString()
                     .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
                 </p>
-                <p className="country__information">
+                <p
+                  className={
+                    switchTheme
+                      ? "country__information"
+                      : "country__information__dark"
+                  }
+                >
                   <span>{`Region: `}</span>
                   {country.region}
                 </p>
-                <p className="country__information">
+                <p
+                  className={
+                    switchTheme
+                      ? "country__information"
+                      : "country__information__dark"
+                  }
+                >
                   <span>{`Capital: `}</span>
                   {country.capital}
                 </p>

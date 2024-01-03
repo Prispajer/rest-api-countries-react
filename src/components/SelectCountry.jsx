@@ -4,7 +4,7 @@ import { faArrowLeft as arrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import { useParams, Link } from "react-router-dom";
 
-export default function SelectedCountry() {
+export default function SelectedCountry({ switchTheme }) {
   const [specificCountry, setSpecificCountry] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -68,7 +68,9 @@ export default function SelectedCountry() {
   });
 
   return (
-    <section className="specificCountry">
+    <section
+      className={switchTheme ? "specific-country" : "specific-country__dark"}
+    >
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -80,15 +82,39 @@ export default function SelectedCountry() {
                 <span>Back</span>
               </button>
             </Link>
-            <section className="specificCountry__container">
+            <section
+              className={
+                switchTheme
+                  ? "specific-country__container"
+                  : "specific-country__container__dark"
+              }
+            >
               <img
                 src={specificCountry.flags.svg}
                 alt={`Flaga: ${specificCountry.name.common}`}
               />
-              <div className="specificCountry__informations-container">
+              <div
+                className={
+                  switchTheme
+                    ? "specific-country__informations-container"
+                    : "specific-country__informations-container__dark"
+                }
+              >
                 <h2>{specificCountry.name.common}</h2>
-                <div className="specificCountry__informations">
-                  <div className="specificCountry__information">
+                <div
+                  className={
+                    switchTheme
+                      ? "specific-country__informations"
+                      : "specific-country__informations__dark"
+                  }
+                >
+                  <div
+                    className={
+                      switchTheme
+                        ? "specific-country__information"
+                        : "specific-country__information__dark"
+                    }
+                  >
                     <p>
                       <span>{"Official Name: "}</span>
                       {specificCountry.name.official}
@@ -112,7 +138,13 @@ export default function SelectedCountry() {
                       {specificCountry.capital}
                     </p>
                   </div>
-                  <div className="specificCountry__information">
+                  <div
+                    className={
+                      switchTheme
+                        ? "specific-country__information"
+                        : "specific-country__information__dark"
+                    }
+                  >
                     <p>
                       <span>{"Top Level Domain: "}</span>
                       {specificCountry.tld}
@@ -127,7 +159,13 @@ export default function SelectedCountry() {
                     </p>
                   </div>
                 </div>
-                <div className="specificCountry__border-countries">
+                <div
+                  className={
+                    switchTheme
+                      ? "specific-country__border-countries"
+                      : "specific-country__border-countries__dark"
+                  }
+                >
                   <p>Border Countries:</p>
                   {borderButtons}
                 </div>
