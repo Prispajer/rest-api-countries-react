@@ -138,6 +138,7 @@ body {
 .specificCountry__informations {
   display: flex;
   justify-content: space-between;
+  gap: 100px;
 }
 .specificCountry__information {
   display: flex;

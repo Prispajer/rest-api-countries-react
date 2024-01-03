@@ -20,7 +20,6 @@ export default function SelectedCountry() {
           throw new Error("Nie można znaleźć danych w API");
         } else {
           const data = await specificData.json();
-          console.log(data);
           setSpecificCountry(data);
           setIsLoading(false);
         }

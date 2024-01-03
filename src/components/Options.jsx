@@ -1,16 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch as solidSearch } from "@fortawesome/free-solid-svg-icons";
 
-export default function Options({ changeValue }) {
+export default function Options({ handleChange, debounce }) {
   return (
     <section className="options">
       <div className="options__search-bar">
         <FontAwesomeIcon className="options__search-icon" icon={solidSearch} />
         <input
-          onChange={changeValue}
           placeholder="Search for a country..."
           type="text"
           className="options__input"
+          onChange={(event) => debounce(handleChange(event.target.value), 1000)}
         />
       </div>
       <div className="options__select-bar">
