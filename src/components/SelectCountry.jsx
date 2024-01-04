@@ -4,10 +4,13 @@ import { faArrowLeft as arrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import { useParams, Link } from "react-router-dom";
 
-export default function SelectedCountry({ switchTheme }) {
-  const [specificCountry, setSpecificCountry] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
-
+export default function SelectedCountry({
+  switchTheme,
+  specificCountry,
+  setSpecificCountry,
+  isLoading,
+  setIsLoading,
+}) {
   const { countryName } = useParams();
 
   React.useEffect(() => {

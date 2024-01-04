@@ -1,14 +1,27 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch as solidSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch as solidSearch,
+  faArrowDown,
+  faArrowUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Options({
   inputValue,
   setInputValue,
-  debouncedValue,
+  filterByRegion,
+  setFilteredRegions,
+  countries,
   setDebouncedValue,
   switchTheme,
 }) {
+  const [showDropDown, setshowDropDown] = React.useState(false);
+  const [selectedRegion, setSelectedRegion] = React.useState(null); // Dodany stan dla wybranej opcji
+
+  function toggleDropDown() {
+    setshowDropDown((prevDropDown) => !prevDropDown);
+  }
+
   function useDebounce(value, delay) {
     React.useEffect(() => {
       let timeOutId;
@@ -20,14 +33,18 @@ export default function Options({
         clearTimeout(timeOutId);
       };
     }, [value, delay]);
-
-    return debouncedValue;
   }
 
   useDebounce(inputValue, 1000);
 
   function handleChange(event) {
     setInputValue(event.target.value);
+  }
+
+  function handleSelectRegion(region) {
+    setSelectedRegion(region);
+    filterByRegion(region);
+    setshowDropDown(true);
   }
 
   return (
@@ -46,21 +63,61 @@ export default function Options({
           className={switchTheme ? "options__input" : "options__input__dark"}
         />
       </div>
-      <div className="options__select-bar">
-        <select
+      <div onClick={toggleDropDown} className="options__dropdown">
+        <div
           className={
-            switchTheme ? "options__select-menu" : "options__select-menu__dark"
+            switchTheme
+              ? "options__dropdown-toggle"
+              : "options__dropdown-toggle__dark"
           }
-          name=""
-          id=""
         >
-          <option value="">Filter by Region</option>
-          <option value="">Africa</option>
-          <option value="">America</option>
-          <option value="">Asia</option>
-          <option value="">Europe</option>
-          <option value="">Oceania</option>
-        </select>
+          {selectedRegion ? selectedRegion : "Filter by Region"}{" "}
+          <FontAwesomeIcon icon={showDropDown ? faArrowUp : faArrowDown} />
+        </div>
+        <div
+          className={
+            showDropDown
+              ? "options__dropdown-menu"
+              : "options__dropdown-menu__closed"
+          }
+        >
+          <button
+            onClick={() => setFilteredRegions(countries)}
+            className="options__select-menu"
+          >
+            All
+          </button>
+          <button
+            onClick={() => handleSelectRegion("Africa")}
+            className="options__select-menu"
+          >
+            Africa
+          </button>
+          <button
+            onClick={() => handleSelectRegion("Americas")}
+            className="options__select-menu"
+          >
+            Americas
+          </button>
+          <button
+            onClick={() => handleSelectRegion("Asia")}
+            className="options__select-menu"
+          >
+            Asia
+          </button>
+          <button
+            onClick={() => handleSelectRegion("Europe")}
+            className="options__select-menu"
+          >
+            Europe
+          </button>
+          <button
+            onClick={() => handleSelectRegion("Oceania")}
+            className="options__select-menu"
+          >
+            Oceania
+          </button>
+        </div>
       </div>
     </section>
   );

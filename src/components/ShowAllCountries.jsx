@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function ShowAllCountries({ debouncedValue, switchTheme }) {
-  const [countries, setCountries] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
-
+export default function ShowAllCountries({
+  debouncedValue,
+  switchTheme,
+  countries,
+  setFilteredRegions,
+  setCountries,
+  isLoading,
+  setIsLoading,
+  filteredRegions,
+}) {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,6 +21,7 @@ export default function ShowAllCountries({ debouncedValue, switchTheme }) {
         } else {
           const data = await response.json();
           setCountries(data);
+          setFilteredRegions(data);
           setIsLoading(false);
         }
       } catch (error) {
@@ -25,7 +32,7 @@ export default function ShowAllCountries({ debouncedValue, switchTheme }) {
     fetchData();
   }, []);
 
-  const findByName = countries.filter((country) =>
+  const findByName = filteredRegions.filter((country) =>
     country.name.common.toLowerCase().includes(debouncedValue.toLowerCase())
   );
 

@@ -48,6 +48,31 @@ body {
   width: 200px;
   height: 60px;
 }
+.options__dark svg, .options svg {
+  margin-left: 10px;
+}
+
+.options__input {
+  border: none;
+  outline: none;
+  background: inherit;
+  font-size: 16px;
+  height: 60px;
+  width: 100%;
+  border-radius: 5px;
+  color: hsl(200, 15%, 8%);
+}
+
+.options__input__dark {
+  border: none;
+  outline: none;
+  background: inherit;
+  font-size: 16px;
+  height: 60px;
+  width: 100%;
+  border-radius: 5px;
+  color: hsl(0, 0%, 100%);
+}
 
 .options__search-bar__dark, .options__search-bar {
   display: flex;
@@ -57,10 +82,10 @@ body {
   border-radius: 5px;
 }
 
-.options__select-menu__dark, .options__select-menu {
+.options__dropdown-toggle__dark, .options__dropdown-toggle {
   width: 100%;
-  height: 100%;
   padding: 20px;
+  cursor: pointer;
   -webkit-appearance: none;
   font-size: 16px;
   border: none;
@@ -151,41 +176,67 @@ body {
 .options__search-bar__dark ::placeholder {
   color: hsl(0, 0%, 100%);
 }
-.options__input {
-  border: none;
-  outline: none;
-  background: inherit;
-  color: hsl(200, 15%, 8%);
-  font-size: 16px;
-  height: 60px;
-  width: 100%;
-  border-radius: 5px;
-}
-.options__input__dark {
-  border: none;
-  outline: none;
-  background: inherit;
-  color: hsl(0, 0%, 100%);
-  font-size: 16px;
-  height: 60px;
-  width: 100%;
-  border-radius: 5px;
-}
-.options__select-menu {
+.options__dropdown-toggle {
   background-color: hsl(0, 0%, 100%);
   color: hsl(200, 15%, 8%);
 }
-.options__select-menu__dark {
+.options__dropdown-toggle__dark {
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%);
 }
+.options__dropdown-menu {
+  position: absolute;
+  margin: 5px 0 0 0;
+  background-color: hsl(0, 0%, 100%);
+  min-width: 176px;
+  padding: 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.options__dropdown-menu__closed {
+  display: none;
+}
+.options__select-menu {
+  border: none;
+  display: flex;
+  padding: 10px 0 0 0;
+  background-color: inherit;
+  font-size: 16px;
+  font-weight: 600px;
+  cursor: pointer;
+}
+
+.countries::before {
+  content: "";
+  background-color: hsl(0, 0%, 98%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.countries__dark::before {
+  content: "";
+  background-color: hsl(207, 26%, 17%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
 .countries {
-  background-color: hsl(0, 0%, 98%);
   color: hsl(200, 15%, 8%);
 }
 .countries__dark {
-  background-color: hsl(207, 26%, 17%);
   color: hsl(0, 0%, 100%);
 }
 
@@ -235,64 +286,13 @@ body {
   display: flex;
   align-items: center;
 }
-.specific-country__dark {
-  background-color: hsl(207, 26%, 17%);
-  margin: 50px 80px;
-  display: flex;
-  align-items: center;
-}
-.specific-country__dark button {
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-.specific-country__dark button span {
-  margin: 0 0 0 10px;
-}
-.specific-country__dark img {
-  height: 160px;
-}
-.specific-country__dark__container {
-  display: flex;
-  align-items: center;
-  margin: 80px 0 0 0;
-  gap: 160px;
-}
-.specific-country__dark__informations-container {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-.specific-country__dark__informations {
-  display: flex;
-  justify-content: space-between;
-  gap: 100px;
-}
-.specific-country__dark__information {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-}
-.specific-country__dark__information span {
-  font-weight: 600;
-}
-.specific-country__dark__border-countries {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.specific-country__dark__border-countries p {
-  font-weight: 600;
-}
 .specific-country button {
+  background-color: hsl(0, 0%, 98%);
+  color: hsl(200, 15%, 8%);
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   padding: 10px 20px;
   border: none;
-  background: transparent;
   cursor: pointer;
 }
 .specific-country button span {
@@ -301,36 +301,91 @@ body {
 .specific-country img {
   height: 160px;
 }
-.specific-country__container {
+.specific-country .specific-country__container {
   display: flex;
   align-items: center;
   margin: 80px 0 0 0;
   gap: 160px;
 }
-.specific-country__informations-container {
+.specific-country .specific-country__informations-container {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
-.specific-country__informations {
+.specific-country .specific-country__informations {
   display: flex;
   justify-content: space-between;
   gap: 100px;
 }
-.specific-country__information {
+.specific-country .specific-country__information {
   display: flex;
   gap: 10px;
   flex-direction: column;
 }
-.specific-country__information span {
+.specific-country .specific-country__information span {
   font-weight: 600;
 }
-.specific-country__border-countries {
+.specific-country .specific-country__border-countries {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.specific-country__border-countries p {
+.specific-country .specific-country__border-countries p {
+  font-weight: 600;
+}
+
+.specific-country__dark {
+  background-color: hsl(207, 26%, 17%);
+  margin: 50px 80px;
+  display: flex;
+  align-items: center;
+}
+.specific-country__dark button {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country__dark button span {
+  margin: 0 0 0 10px;
+}
+.specific-country__dark img {
+  height: 160px;
+}
+.specific-country__dark .specific-country__container__dark {
+  display: flex;
+  align-items: center;
+  margin: 80px 0 0 0;
+  gap: 160px;
+  color: hsl(0, 0%, 100%);
+}
+.specific-country__dark .specific-country__informations-container__dark {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.specific-country__dark .specific-country__informations__dark {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+}
+.specific-country__dark .specific-country__information__dark {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.specific-country__dark .specific-country__information__dark span {
+  font-weight: 600;
+}
+.specific-country__dark .specific-country__border-countries__dark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.specific-country__dark .specific-country__border-countries__dark p {
   font-weight: 600;
 }
 
