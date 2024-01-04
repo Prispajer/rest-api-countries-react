@@ -3,10 +3,14 @@ import Options from "../components/Options";
 import Navbar from "../components/Navbar";
 import ShowAllCountries from "../components/ShowAllCountries";
 
-export default function AllCountries({ toggleTheme, switchTheme }) {
+export default function AllCountries({
+  countries,
+  setCountries,
+  toggleTheme,
+  switchTheme,
+}) {
   const [inputValue, setInputValue] = React.useState("");
   const [debouncedValue, setDebouncedValue] = React.useState(inputValue);
-  const [countries, setCountries] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [filteredRegions, setFilteredRegions] = React.useState([]);
 

@@ -7,6 +7,7 @@ import { useParams, Link } from "react-router-dom";
 export default function SelectedCountry({
   switchTheme,
   specificCountry,
+  countries,
   setSpecificCountry,
   isLoading,
   setIsLoading,
@@ -23,6 +24,7 @@ export default function SelectedCountry({
           throw new Error("Nie można znaleźć danych w API");
         } else {
           const data = await specificData.json();
+          console.log(data);
           setSpecificCountry(data);
           setIsLoading(false);
         }
@@ -60,11 +62,22 @@ export default function SelectedCountry({
 
   const borderButtons = borders.map((countryBorders) => {
     if (countryBorders && countryBorders.length > 0) {
-      return countryBorders.map((border) => (
-        <Link key={uuidv4()} to={`/specificCountry/${border}`}>
-          <button key={uuidv4()}>{border}</button>
-        </Link>
-      ));
+      return countryBorders.map((border) => {
+        const findNeighbour = countries.find(
+          (country) => country.cca3 === border
+        );
+
+        return (
+          <Link
+            key={uuidv4()}
+            to={`/specificCountry/${findNeighbour.name.common}`}
+          >
+            <button key={uuidv4()}>
+              {findNeighbour ? findNeighbour.name.common : border}
+            </button>
+          </Link>
+        );
+      });
     } else {
       return <span key={uuidv4()}>This country has no neighbours!</span>;
     }

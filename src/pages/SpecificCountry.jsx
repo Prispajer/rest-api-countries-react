@@ -2,13 +2,20 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import SelectCountry from "../components/SelectCountry";
 
-export default function SpecificCountry({ toggleTheme, switchTheme }) {
+export default function SpecificCountry({
+  countries,
+  setCountries,
+  toggleTheme,
+  switchTheme,
+}) {
   const [specificCountry, setSpecificCountry] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   return (
     <>
       <Navbar toggleTheme={toggleTheme} switchTheme={switchTheme} />
       <SelectCountry
+        countries={countries}
+        setCountries={setCountries}
         specificCountry={specificCountry}
         setSpecificCountry={setSpecificCountry}
         isLoading={isLoading}

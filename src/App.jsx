@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./styles/main.scss";
 
 function App() {
+  const [countries, setCountries] = React.useState([]);
   const [switchTheme, setSwitchTheme] = React.useState(true);
 
   function toggleTheme() {
@@ -18,6 +19,8 @@ function App() {
             path="/"
             element={
               <AllCountries
+                countries={countries}
+                setCountries={setCountries}
                 toggleTheme={toggleTheme}
                 switchTheme={switchTheme}
               />
@@ -27,6 +30,8 @@ function App() {
             path="/specificCountry/:countryName"
             element={
               <SpecificCountry
+                countries={countries}
+                setCountries={setCountries}
                 toggleTheme={toggleTheme}
                 switchTheme={switchTheme}
               />

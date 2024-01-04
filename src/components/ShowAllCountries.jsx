@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function ShowAllCountries({
   debouncedValue,
   switchTheme,
-  countries,
   setFilteredRegions,
   setCountries,
   isLoading,
@@ -21,6 +20,7 @@ export default function ShowAllCountries({
         } else {
           const data = await response.json();
           setCountries(data);
+          console.log(data);
           setFilteredRegions(data);
           setIsLoading(false);
         }
