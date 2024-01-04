@@ -43,7 +43,7 @@ export default function Options({
 
   function handleSelectRegion(region) {
     setSelectedRegion(region);
-    filterByRegion(region);
+    region === "All" ? setFilteredRegions(countries) : filterByRegion(region);
   }
 
   return (
@@ -83,7 +83,7 @@ export default function Options({
           }
         >
           <button
-            onClick={() => setFilteredRegions(countries)}
+            onClick={() => handleSelectRegion("All")}
             className={
               switchTheme
                 ? "options__select-menu"
