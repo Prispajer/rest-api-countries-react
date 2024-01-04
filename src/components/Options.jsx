@@ -15,8 +15,8 @@ export default function Options({
   setDebouncedValue,
   switchTheme,
 }) {
-  const [showDropDown, setshowDropDown] = React.useState(false);
-  const [selectedRegion, setSelectedRegion] = React.useState(null); // Dodany stan dla wybranej opcji
+  const [showDropDown, setshowDropDown] = React.useState(true);
+  const [selectedRegion, setSelectedRegion] = React.useState(null);
 
   function toggleDropDown() {
     setshowDropDown((prevDropDown) => !prevDropDown);
@@ -44,7 +44,6 @@ export default function Options({
   function handleSelectRegion(region) {
     setSelectedRegion(region);
     filterByRegion(region);
-    setshowDropDown(true);
   }
 
   return (
@@ -71,49 +70,75 @@ export default function Options({
               : "options__dropdown-toggle__dark"
           }
         >
-          {selectedRegion ? selectedRegion : "Filter by Region"}{" "}
-          <FontAwesomeIcon icon={showDropDown ? faArrowUp : faArrowDown} />
+          {selectedRegion ? selectedRegion : "Filter by Region"}
+          <FontAwesomeIcon icon={showDropDown ? faArrowDown : faArrowUp} />
         </div>
         <div
           className={
-            showDropDown
-              ? "options__dropdown-menu"
-              : "options__dropdown-menu__closed"
+            switchTheme && !showDropDown
+              ? "options__dropdown-menu "
+              : showDropDown
+              ? "options__dropdown-menu__closed"
+              : "options__dropdown-menu__dark"
           }
         >
           <button
             onClick={() => setFilteredRegions(countries)}
-            className="options__select-menu"
+            className={
+              switchTheme
+                ? "options__select-menu"
+                : "options__select-menu__dark"
+            }
           >
             All
           </button>
           <button
             onClick={() => handleSelectRegion("Africa")}
-            className="options__select-menu"
+            className={
+              switchTheme
+                ? "options__select-menu"
+                : "options__select-menu__dark"
+            }
           >
             Africa
           </button>
           <button
             onClick={() => handleSelectRegion("Americas")}
-            className="options__select-menu"
+            className={
+              switchTheme
+                ? "options__select-menu"
+                : "options__select-menu__dark"
+            }
           >
             Americas
           </button>
           <button
             onClick={() => handleSelectRegion("Asia")}
-            className="options__select-menu"
+            className={
+              switchTheme
+                ? "options__select-menu"
+                : "options__select-menu__dark"
+            }
           >
             Asia
           </button>
           <button
             onClick={() => handleSelectRegion("Europe")}
-            className="options__select-menu"
+            className={
+              switchTheme
+                ? "options__select-menu"
+                : "options__select-menu__dark"
+            }
           >
             Europe
           </button>
           <button
             onClick={() => handleSelectRegion("Oceania")}
-            className="options__select-menu"
+            className={
+              switchTheme
+                ? "options__select-menu"
+                : "options__select-menu__dark"
+            }
           >
             Oceania
           </button>

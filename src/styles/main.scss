@@ -258,6 +258,22 @@ body {
     border-radius: 5px;
   }
 
+  &__dropdown-menu__dark {
+    position: absolute;
+    margin: 5px 0 0 0;
+    background-color: $dark-mode-elements;
+    min-width: 176px;
+    max-width: 176px;
+    padding: 20px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
   &__dropdown-menu__closed {
     display: none;
   }
@@ -266,6 +282,18 @@ body {
     border: none;
     display: flex;
     padding: 10px 0 0 0;
+    color: $light-mode-text;
+    background-color: inherit;
+    font-size: 16px;
+    font-weight: 600px;
+    cursor: pointer;
+  }
+
+  &__select-menu__dark {
+    border: none;
+    display: flex;
+    padding: 10px 0 0 0;
+    color: $dark-mode-text;
     background-color: inherit;
     font-size: 16px;
     font-weight: 600px;
