@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap");
+@import "./breakpoints";
 
 $dark-mode-elements: hsl(209, 23%, 22%);
 $dark-mode-background: hsl(207, 26%, 17%);
@@ -34,6 +35,10 @@ body {
   padding: 0 80px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
 
+  @include sm {
+    padding: 0 30px;
+  }
+
   .navbar__header {
     cursor: pointer;
   }
@@ -45,6 +50,12 @@ body {
   .navbar__theme {
     font-weight: 600;
     cursor: pointer;
+
+    @include esm {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
   }
 }
 
@@ -66,6 +77,15 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 50px 80px;
+  @include md {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  @include sm {
+    padding: 30px 30px;
+  }
 
   .options__search-icon {
     color: gray;
@@ -107,6 +127,10 @@ body {
   outline: none;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+
+  @include md {
+    margin: 10px 0 0 0;
+  }
 }
 
 .options {
@@ -124,6 +148,15 @@ body {
     @extend %search-bar;
     background-color: $light-mode-elements;
     color: $light-mode-text;
+    flex-basis: 500px;
+
+    @include md {
+      flex-basis: 100%;
+    }
+
+    @include xxl {
+      flex-basis: 500px;
+    }
 
     ::placeholder {
       color: $light-mode-text;
@@ -133,6 +166,15 @@ body {
       @extend %search-bar;
       background-color: $dark-mode-elements;
       color: $dark-mode-text;
+      flex-basis: 500px;
+
+      @include md {
+        flex-basis: 100%;
+      }
+
+      @include xxl {
+        flex-basis: 500px;
+      }
 
       ::placeholder {
         color: $dark-mode-text;
@@ -141,10 +183,10 @@ body {
   }
 
   &__input {
-    @include input-options($light-mode-background);
+    @include input-options($light-mode-text);
 
     &__dark {
-      @include input-options($dark-mode-background);
+      @include input-options($dark-mode-text);
     }
   }
 
@@ -212,7 +254,6 @@ body {
   display: flex;
   align-items: center;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.1);
-  flex-basis: 500px;
   border-radius: 5px;
 }
 
@@ -229,8 +270,8 @@ body {
 
 %countries {
   display: grid;
-  row-gap: 70px;
-  column-gap: 70px;
+  row-gap: 60px;
+  column-gap: 60px;
   grid-template-columns: repeat(4, 1fr);
   padding: 0 80px;
 }
@@ -247,12 +288,42 @@ body {
   @extend %countries;
   @extend %decoration-none;
   @extend %country__stats;
+  @include xxl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include xl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include md {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include sm {
+    padding: 0 30px;
+  }
   color: $light-mode-text;
 
   &__dark {
     @extend %countries;
     @extend %decoration-none;
     @extend %country__stats__dark;
+    @include xxl {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include xl {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include md {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    @include sm {
+      padding: 0 30px;
+    }
     color: $dark-mode-text;
   }
 }
@@ -357,6 +428,7 @@ body {
 %country-information__borders-countries {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 
   p {
