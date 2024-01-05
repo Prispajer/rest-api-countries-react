@@ -7,10 +7,12 @@ import "./styles/main.scss";
 function App() {
   const [countries, setCountries] = React.useState([]);
   const [switchTheme, setSwitchTheme] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   function toggleTheme() {
     setSwitchTheme((prevTheme) => !prevTheme);
   }
+
   return (
     <main>
       <Router>
@@ -21,8 +23,10 @@ function App() {
               <AllCountries
                 countries={countries}
                 setCountries={setCountries}
-                toggleTheme={toggleTheme}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
                 switchTheme={switchTheme}
+                toggleTheme={toggleTheme}
               />
             }
           />
@@ -32,8 +36,10 @@ function App() {
               <SpecificCountry
                 countries={countries}
                 setCountries={setCountries}
-                toggleTheme={toggleTheme}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
                 switchTheme={switchTheme}
+                toggleTheme={toggleTheme}
               />
             }
           />

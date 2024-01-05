@@ -6,12 +6,13 @@ import ShowAllCountries from "../components/ShowAllCountries";
 export default function AllCountries({
   countries,
   setCountries,
+  isLoading,
+  setIsLoading,
   toggleTheme,
   switchTheme,
 }) {
   const [inputValue, setInputValue] = React.useState("");
   const [debouncedValue, setDebouncedValue] = React.useState(inputValue);
-  const [isLoading, setIsLoading] = React.useState(false);
   const [filteredRegions, setFilteredRegions] = React.useState([]);
 
   function filterByRegion(region) {

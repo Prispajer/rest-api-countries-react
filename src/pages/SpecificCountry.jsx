@@ -5,11 +5,12 @@ import SelectCountry from "../components/SelectCountry";
 export default function SpecificCountry({
   countries,
   setCountries,
-  toggleTheme,
+  isLoading,
+  setIsLoading,
   switchTheme,
+  toggleTheme,
 }) {
   const [specificCountry, setSpecificCountry] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
   return (
     <>
       <Navbar toggleTheme={toggleTheme} switchTheme={switchTheme} />

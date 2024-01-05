@@ -5,12 +5,12 @@ import { v4 as uuidv4 } from "uuid";
 import { useParams, Link } from "react-router-dom";
 
 export default function SelectedCountry({
-  switchTheme,
-  specificCountry,
   countries,
+  specificCountry,
   setSpecificCountry,
   isLoading,
   setIsLoading,
+  switchTheme,
 }) {
   const { countryName } = useParams();
 
@@ -24,7 +24,6 @@ export default function SelectedCountry({
           throw new Error("Nie można znaleźć danych w API");
         } else {
           const data = await specificData.json();
-          console.log(data);
           setSpecificCountry(data);
           setIsLoading(false);
         }

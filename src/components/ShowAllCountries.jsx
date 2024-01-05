@@ -20,7 +20,6 @@ export default function ShowAllCountries({
         } else {
           const data = await response.json();
           setCountries(data);
-          console.log(data);
           setFilteredRegions(data);
           setIsLoading(false);
         }
