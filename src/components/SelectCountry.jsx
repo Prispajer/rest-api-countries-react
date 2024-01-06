@@ -104,10 +104,12 @@ export default function SelectedCountry({
                   : "specific-country__container__dark"
               }
             >
-              <img
-                src={specificCountry.flags.svg}
-                alt={`Flaga: ${specificCountry.name.common}`}
-              />
+              <div className="specific-country__image-container">
+                <img
+                  src={specificCountry.flags.svg}
+                  alt={`Flaga: ${specificCountry.name.common}`}
+                />
+              </div>
               <div
                 className={
                   switchTheme
