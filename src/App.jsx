@@ -2,7 +2,6 @@ import React from "react";
 import AllCountries from "./pages/AllCountries";
 import SpecificCountry from "./pages/SpecificCountry";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./styles/main.scss";
 
 function App() {
   const [countries, setCountries] = React.useState([]);
