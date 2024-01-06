@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ShowAllCountries({
-  debouncedValue,
-  switchTheme,
-  setFilteredRegions,
-  setCountries,
   isLoading,
   setIsLoading,
   filteredRegions,
+  setFilteredRegions,
+  debouncedValue,
+  setCountries,
+  switchTheme,
 }) {
   React.useEffect(() => {
     const fetchData = async () => {

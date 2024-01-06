@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 import { useParams, Link } from "react-router-dom";
 
 export default function SelectedCountry({
-  countries,
   specificCountry,
   setSpecificCountry,
   isLoading,
   setIsLoading,
+  countries,
   switchTheme,
 }) {
   const { countryName } = useParams();
@@ -90,14 +90,21 @@ export default function SelectedCountry({
         <p>Loading...</p>
       ) : (
         specificCountry.map((specificCountry) => (
-          <section key={specificCountry.name.official}>
+          <>
             <Link to="/">
-              <button>
+              <button
+                className={
+                  switchTheme
+                    ? "specific-country__back"
+                    : "specific-country__back__dark"
+                }
+              >
                 <FontAwesomeIcon icon={arrowLeft} />
                 <span>Back</span>
               </button>
             </Link>
             <section
+              key={specificCountry.name.official}
               className={
                 switchTheme
                   ? "specific-country__container"
@@ -188,7 +195,7 @@ export default function SelectedCountry({
                 </div>
               </div>
             </section>
-          </section>
+          </>
         ))
       )}
     </section>

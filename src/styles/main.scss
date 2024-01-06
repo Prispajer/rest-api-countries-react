@@ -399,13 +399,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 60px 0 0 0;
+  margin: 80px 0;
 
   @include xl {
     display: flex;
     flex-direction: column;
-    margin: 40px 0 0 0;
+    margin: 80px 0;
     gap: 30px;
+  }
+}
+
+@mixin country-information__buttons($button-color, $text-color, $position) {
+  background-color: $button-color;
+  position: $position;
+  top: 0;
+  color: $text-color;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+
+  span {
+    margin: 0 0 0 10px;
   }
 }
 
@@ -419,13 +435,24 @@ body {
     object-fit: cover;
   }
 
+  @include xxl {
+    img {
+      height: 400px;
+    }
+  }
+
+  @include xl {
+    padding: 0;
+
+    img {
+      height: 350px;
+    }
+  }
+
   @include md {
     img {
       height: 300px;
     }
-  }
-  @include xl {
-    padding: 0;
   }
 
   @include sm {
@@ -474,20 +501,7 @@ body {
   margin: 50px 80px;
   display: flex;
   align-items: center;
-
-  button {
-    background-color: $button-color;
-    color: $text-color;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-
-    span {
-      margin: 0 0 0 10px;
-    }
-  }
+  position: relative;
 
   img {
     height: 160px;
@@ -499,6 +513,22 @@ body {
     &__dark {
       @extend %country-information__container;
       color: $text-color;
+    }
+  }
+
+  .specific-country__back {
+    @include country-information__buttons(
+      $light-mode-elements,
+      $light-mode-text,
+      absolute
+    );
+
+    &__dark {
+      @include country-information__buttons(
+        $dark-mode-elements,
+        $dark-mode-text,
+        absolute
+      );
     }
   }
 
@@ -533,8 +563,23 @@ body {
   .specific-country__border-countries {
     @extend %country-information__borders-countries;
 
+    button {
+      @include country-information__buttons(
+        $light-mode-elements,
+        $light-mode-text,
+        flex
+      );
+    }
+
     &__dark {
       @extend %country-information__borders-countries;
+      button {
+        @include country-information__buttons(
+          $dark-mode-elements,
+          $dark-mode-text,
+          flex
+        );
+      }
     }
   }
 }
@@ -553,6 +598,11 @@ body {
   @include md {
     margin: 40px 40px;
   }
+
+  @include xl {
+    display: flex;
+    justify-content: center;
+  }
 }
 .specific-country__dark {
   @include country-information(
@@ -567,6 +617,11 @@ body {
 
   @include md {
     margin: 40px 40px;
+  }
+
+  @include xl {
+    display: flex;
+    justify-content: center;
   }
 }
 

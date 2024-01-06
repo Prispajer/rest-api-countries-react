@@ -386,13 +386,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 60px 0 0 0;
+  margin: 80px 0;
 }
 @media (max-width: 1100px) {
   .specific-country__dark .specific-country__container__dark, .specific-country__dark .specific-country__container, .specific-country .specific-country__container__dark, .specific-country .specific-country__container {
     display: flex;
     flex-direction: column;
-    margin: 40px 0 0 0;
+    margin: 80px 0;
     gap: 30px;
   }
 }
@@ -407,14 +407,22 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-@media (max-width: 720px) {
+@media (max-width: 1440px) {
   .specific-country__dark .specific-country__image-container img, .specific-country .specific-country__image-container img {
-    height: 300px;
+    height: 400px;
   }
 }
 @media (max-width: 1100px) {
   .specific-country__dark .specific-country__image-container, .specific-country .specific-country__image-container {
     padding: 0;
+  }
+  .specific-country__dark .specific-country__image-container img, .specific-country .specific-country__image-container img {
+    height: 350px;
+  }
+}
+@media (max-width: 720px) {
+  .specific-country__dark .specific-country__image-container img, .specific-country .specific-country__image-container img {
+    height: 300px;
   }
 }
 @media (max-width: 530px) {
@@ -460,18 +468,7 @@ body {
   margin: 50px 80px;
   display: flex;
   align-items: center;
-}
-.specific-country button {
-  background-color: hsl(0, 0%, 100%);
-  color: hsl(200, 15%, 8%);
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-.specific-country button span {
-  margin: 0 0 0 10px;
+  position: relative;
 }
 .specific-country img {
   height: 160px;
@@ -482,6 +479,62 @@ body {
 .specific-country .specific-country__container__dark {
   color: hsl(200, 15%, 8%);
 }
+.specific-country .specific-country__back {
+  background-color: hsl(0, 0%, 100%);
+  position: absolute;
+  top: 0;
+  color: hsl(200, 15%, 8%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country .specific-country__back span {
+  margin: 0 0 0 10px;
+}
+.specific-country .specific-country__back__dark {
+  background-color: hsl(209, 23%, 22%);
+  position: absolute;
+  top: 0;
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country .specific-country__back__dark span {
+  margin: 0 0 0 10px;
+}
+.specific-country .specific-country__border-countries button {
+  background-color: hsl(0, 0%, 100%);
+  position: flex;
+  top: 0;
+  color: hsl(200, 15%, 8%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country .specific-country__border-countries button span {
+  margin: 0 0 0 10px;
+}
+.specific-country .specific-country__border-countries__dark button {
+  background-color: hsl(209, 23%, 22%);
+  position: flex;
+  top: 0;
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country .specific-country__border-countries__dark button span {
+  margin: 0 0 0 10px;
+}
 @media (max-width: 530px) {
   .specific-country {
     margin: 40px 30px;
@@ -492,24 +545,19 @@ body {
     margin: 40px 40px;
   }
 }
+@media (max-width: 1100px) {
+  .specific-country {
+    display: flex;
+    justify-content: center;
+  }
+}
 
 .specific-country__dark {
   background-color: hsl(207, 26%, 17%);
   margin: 50px 80px;
   display: flex;
   align-items: center;
-}
-.specific-country__dark button {
-  background-color: hsl(209, 23%, 22%);
-  color: hsl(0, 0%, 100%);
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-.specific-country__dark button span {
-  margin: 0 0 0 10px;
+  position: relative;
 }
 .specific-country__dark img {
   height: 160px;
@@ -520,6 +568,62 @@ body {
 .specific-country__dark .specific-country__container__dark {
   color: hsl(0, 0%, 100%);
 }
+.specific-country__dark .specific-country__back {
+  background-color: hsl(0, 0%, 100%);
+  position: absolute;
+  top: 0;
+  color: hsl(200, 15%, 8%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country__dark .specific-country__back span {
+  margin: 0 0 0 10px;
+}
+.specific-country__dark .specific-country__back__dark {
+  background-color: hsl(209, 23%, 22%);
+  position: absolute;
+  top: 0;
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country__dark .specific-country__back__dark span {
+  margin: 0 0 0 10px;
+}
+.specific-country__dark .specific-country__border-countries button {
+  background-color: hsl(0, 0%, 100%);
+  position: flex;
+  top: 0;
+  color: hsl(200, 15%, 8%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country__dark .specific-country__border-countries button span {
+  margin: 0 0 0 10px;
+}
+.specific-country__dark .specific-country__border-countries__dark button {
+  background-color: hsl(209, 23%, 22%);
+  position: flex;
+  top: 0;
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.specific-country__dark .specific-country__border-countries__dark button span {
+  margin: 0 0 0 10px;
+}
 @media (max-width: 530px) {
   .specific-country__dark {
     margin: 40px 30px;
@@ -528,6 +632,12 @@ body {
 @media (max-width: 720px) {
   .specific-country__dark {
     margin: 40px 40px;
+  }
+}
+@media (max-width: 1100px) {
+  .specific-country__dark {
+    display: flex;
+    justify-content: center;
   }
 }
 

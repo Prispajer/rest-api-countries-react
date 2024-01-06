@@ -31,10 +31,10 @@ export default function AllCountries({
         debouncedValue={debouncedValue}
         setDebouncedValue={setDebouncedValue}
         countries={countries}
-        filterByRegion={filterByRegion}
         setCountries={setCountries}
         filteredRegions={filteredRegions}
         setFilteredRegions={setFilteredRegions}
+        filterByRegion={filterByRegion}
         switchTheme={switchTheme}
       />
       <ShowAllCountries
