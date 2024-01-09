@@ -3,16 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft as arrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import { useParams, Link } from "react-router-dom";
+import { Context } from "../App";
 
-export default function SelectedCountry({
-  specificCountry,
-  setSpecificCountry,
-  isLoading,
-  setIsLoading,
-  countries,
-  switchTheme,
-}) {
+export default function SelectCountry({ specificCountry, setSpecificCountry }) {
   const { countryName } = useParams();
+  const { isLoading, setIsLoading, countries, switchTheme } =
+    React.useContext(Context);
 
   React.useEffect(() => {
     const fetchData = async () => {

@@ -3,6 +3,8 @@ import AllCountries from "./pages/AllCountries";
 import SpecificCountry from "./pages/SpecificCountry";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+export const Context = React.createContext();
+
 function App() {
   const [countries, setCountries] = React.useState([]);
   const [switchTheme, setSwitchTheme] = React.useState(true);
@@ -12,39 +14,30 @@ function App() {
     setSwitchTheme((prevTheme) => !prevTheme);
   }
 
+  const contextValues = {
+    countries,
+    setCountries,
+    switchTheme,
+    setSwitchTheme,
+    isLoading,
+    setIsLoading,
+    toggleTheme,
+  };
+
   return (
-    <main>
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <AllCountries
-                countries={countries}
-                setCountries={setCountries}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
-                switchTheme={switchTheme}
-                toggleTheme={toggleTheme}
-              />
-            }
-          />
-          <Route
-            path="/specificCountry/:countryName"
-            element={
-              <SpecificCountry
-                countries={countries}
-                setCountries={setCountries}
-                isLoading={isLoading}
-                setIsLoading={setIsLoading}
-                switchTheme={switchTheme}
-                toggleTheme={toggleTheme}
-              />
-            }
-          />
-        </Routes>
-      </Router>
-    </main>
+    <Context.Provider value={contextValues}>
+      <main>
+        <Router>
+          <Routes>
+            <Route path="/" element={<AllCountries countries={countries} />} />
+            <Route
+              path="/specificCountry/:countryName"
+              element={<SpecificCountry />}
+            />
+          </Routes>
+        </Router>
+      </main>
+    </Context.Provider>
   );
 }
 

@@ -1,20 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../App";
 
 export default function ShowAllCountries({
-  isLoading,
-  setIsLoading,
   filteredRegions,
   setFilteredRegions,
   debouncedValue,
-  setCountries,
-  switchTheme,
 }) {
+  const { isLoading, setIsLoading, setCountries, switchTheme } =
+    React.useContext(Context);
+
   React.useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("https://restcountries.com/v3.1/all");
-
         if (!response.ok) {
           throw new Error("Nie można znaleźć danych w API");
         } else {

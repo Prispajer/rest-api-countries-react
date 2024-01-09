@@ -5,16 +5,16 @@ import {
   faArrowDown,
   faArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
+import { Context } from "../App";
 
 export default function Options({
   inputValue,
   setInputValue,
-  filterByRegion,
-  setFilteredRegions,
-  countries,
   setDebouncedValue,
-  switchTheme,
+  setFilteredRegions,
+  filterByRegion,
 }) {
+  const { countries, switchTheme } = React.useContext(Context);
   const [showDropDown, setshowDropDown] = React.useState(true);
   const [selectedRegion, setSelectedRegion] = React.useState(null);
 
