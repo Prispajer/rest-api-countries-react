@@ -10,7 +10,10 @@ export function toggleDropDown(
   setSwitchDropDown((prevDropDown) => !prevDropDown);
 }
 
-export function debounce(callback: Function, delay: number): () => any {
+export function debounce<T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number
+): (...args: any[]) => void {
   let timer: number;
   return (...args: any[]) => {
     if (timer) {

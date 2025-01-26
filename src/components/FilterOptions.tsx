@@ -17,12 +17,15 @@ export default function FilterOptions() {
     setSwitchDropDown,
     selectedRegion,
     setSelectedRegion,
-    filteredCountries,
     setFilteredCountries,
-    inputValue,
     setInputValue,
     switchTheme,
   } = React.useContext(Context);
+
+  const debouncedSetInputValue = React.useMemo(
+    () => debounce((value: string) => setInputValue(value), 1000),
+    [setInputValue]
+  );
 
   const handleSelectRegion = React.useCallback(
     (region: string) => {
@@ -33,15 +36,8 @@ export default function FilterOptions() {
         setFilteredCountries(filterByRegion(countries, region));
       }
     },
-    [filteredCountries]
+    [countries, setFilteredCountries, setSelectedRegion]
   );
-
-  React.useEffect(() => {
-    debounce(setInputValue, 1000);
-  }, [debounce]);
-
-  const getButtonClass = (isDark: boolean) =>
-    isDark ? "options__select-menu__dark" : "options__select-menu";
 
   return (
     <section className={switchTheme ? "options" : "options__dark"}>
@@ -57,9 +53,8 @@ export default function FilterOptions() {
         <input
           placeholder="Search for a country..."
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-            setInputValue(event.target.value)
+            debouncedSetInputValue(event.target.value)
           }
-          value={inputValue}
           type="text"
           className={switchTheme ? "options__input" : "options__input__dark"}
         />
@@ -98,7 +93,11 @@ export default function FilterOptions() {
               <button
                 key={region}
                 onClick={() => handleSelectRegion(region)}
-                className={getButtonClass(!switchTheme)}
+                className={
+                  switchTheme
+                    ? "options__select-menu__dark"
+                    : "options__select-menu"
+                }
               >
                 {region}
               </button>

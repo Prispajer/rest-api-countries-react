@@ -19,7 +19,7 @@ export default function CountryContainer() {
   } = React.useContext(Context);
 
   React.useEffect(() => {
-    const fetchCountries = async () => {
+    const fetchCountry = async () => {
       setIsLoading(true);
       try {
         const country = await fetchData(
@@ -33,7 +33,7 @@ export default function CountryContainer() {
       }
     };
 
-    fetchCountries();
+    fetchCountry();
   }, [countryName, setCountry, setIsLoading]);
 
   const findByProperty = country?.find(

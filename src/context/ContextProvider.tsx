@@ -20,7 +20,6 @@ export const Context = createContext<ContextType>({
   setIsLoading: () => {},
 });
 
-// Provider kontekstu
 export const ContextProvider = ({
   children,
 }: {

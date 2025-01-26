@@ -1,6 +1,6 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CountriesPage from "./pages/CountriesPage";
+import Navbar from "./components/Navbar";
 import CountryPage from "./pages/CountryPage";
 import { ContextProvider } from "./context/ContextProvider";
 
