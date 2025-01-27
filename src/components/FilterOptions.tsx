@@ -95,8 +95,8 @@ export default function FilterOptions() {
                 onClick={() => handleSelectRegion(region)}
                 className={
                   switchTheme
-                    ? "options__select-menu__dark"
-                    : "options__select-menu"
+                    ? "options__select-menu"
+                    : "options__select-menu__dark"
                 }
               >
                 {region}
